@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calender Icon Animation</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .parentDiv {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background-color: aliceblue;
+      }
+
+      .wrapper {
+        width: 480px;
+      }
+
+      #clock-hand-hour {
+        transform-box: fill-box;
+        transform-origin: bottom center;
+        transform: scale(0);
+        animation: appeareIn 0.75s ease-out 3s forwards,
+          clockHandHour 1.5s ease-in-out 4.5s forwards;
+      }
+
+      @keyframes clockHandHour {
+        100% {
+          transform: rotate(45deg);
+        }
+      }
+
+      #clock-hand-minute {
+        transform-box: fill-box;
+        transform-origin: bottom center;
+        transform: scale(0);
+        animation: appeareIn 0.75s ease-out 3s forwards,
+          clockHand 1.5s ease-in-out 5s forwards;
+      }
+
+      @keyframes clockHand {
+        100% {
+          transform: scale(1) rotate(360deg);
+        }
+      }
+
+      #arrow-1,
+      #arrow-2,
+      #arrow-3 {
+        stroke-dasharray: 59.39697265625px;
+        stroke-dashoffset: 59.39697265625px;
+        animation: arrowIn 0.75s ease-in-out 2s forwards;
+      }
+
+      @keyframes arrowIn {
+        100% {
+          stroke-dashoffset: 0px;
+        }
+      }
+
+      #b-1,
+      #b-2,
+      #b-3,
+      #b-4,
+      #b-5,
+      #b-6,
+      #b-7,
+      #b-8,
+      #b-9,
+      #b-10,
+      #b-11,
+      #b-12,
+      #b-13,
+      #b-14,
+      #b-15,
+      #b-16,
+      #b-17,
+      #b-18,
+      #b-19,
+      #b-20,
+      #b-21,
+      #b-22,
+      #b-23,
+      #b-24,
+      #b-25,
+      #b-26,
+      #b-27,
+      #b-28,
+      #b-29,
+      #b-30,
+      #b-31,
+      #b-32 {
+        transform-box: fill-box;
+        transform-origin: left top;
+        transform: scale(0);
+        animation: dateBoxIn 1.5s ease-in-out 1s forwards;
+      }
+
+      @keyframes dateBoxIn {
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      #lines-bg-box {
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: translateX(-35px);
+        opacity: 0;
+        animation: lineBgBox 0.75s ease-in-out 1s forwards;
+      }
+
+      @keyframes lineBgBox {
+        0% {
+          transform: translateX(-35px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0px);
+        }
+      }
+
+      #bottom-line-1,
+      #bottom-line-2,
+      #bottom-line-3 {
+        transform-box: fill-box;
+        transform-origin: left center;
+        stroke-dasharray: 127px;
+        stroke-dashoffset: 127px;
+        animation: bottomLinIn 1s ease-out 2s forwards;
+      }
+
+      #bottom-line-2 {
+        animation-delay: 2.2s;
+      }
+      #bottom-line-3 {
+        animation-delay: 2.4s;
+      }
+
+      #bottom-line-4 {
+        transform-box: fill-box;
+        transform-origin: left center;
+        stroke-dasharray: 63.5px;
+        stroke-dashoffset: 63.5px;
+        animation: bottomLinIn 1s ease-out 2.6s forwards;
+      }
+
+      @keyframes bottomLinIn {
+        100% {
+          stroke-dashoffset: 0px;
+        }
+      }
+
+      #cross {
+        transform-box: fill-box;
+        transform-origin: center;
+        opacity: 0;
+        animation: crossRotate 0.75s ease-out 4s forwards;
+      }
+
+      @keyframes crossRotate {
+        0% {
+          opacity: 0;
+          transform: translateY(35px) rotate(0deg);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(0px) rotate(360deg);
+        }
+      }
+
+      #bottom-box-1,
+      #bottom-box-2,
+      #bottom-box-3,
+      #bottom-box-4 {
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: scale(0);
+        animation: appeareIn 0.75s ease-out 3s forwards;
+      }
+
+      #bottom-box-2 {
+        animation-delay: 3.2s;
+      }
+      #bottom-box-3 {
+        animation-delay: 3.6s;
+      }
+      #bottom-box-4 {
+        animation-delay: 3.8s;
+      }
+
+      #calander-full {
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: scale(0);
+        animation: appeareIn 0.75s ease-in-out forwards;
+      }
+
+      @keyframes appeareIn {
+        0% {
+          transform: scale(0);
+        }
+
+        80% {
+          transform: scale(1.1);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      #full-clock {
+        transform-box: fill-box;
+        transform-origin: center;
+        transform: scale(0);
+        animation: appeareIn 0.75s ease-in-out 3s forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parentDiv">
+      <div class="wrapper">
+        <svg
+          width="100%"
+          min-height="0"
+          viewBox="0 0 645 705"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="Calander-icon">
+            <g id="cross">
+              <g id="right-cross">
+                <path
+                  id="Vector 8"
+                  d="M247.5 586.5L268.875 565.125"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="left-cross">
+                <path
+                  id="Vector 9"
+                  d="M268.875 586.5L247.5 565.125"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+              </g>
+            </g>
+            <g id="calander-full">
+              <g id="bg">
+                <rect
+                  id="Rectangle 40"
+                  x="64"
+                  y="73"
+                  width="516"
+                  height="342.75"
+                  fill="white"
+                />
+              </g>
+              <g id="top-box">
+                <rect
+                  id="Rectangle 6"
+                  x="61.5"
+                  y="70.75"
+                  width="522"
+                  height="68.5"
+                  fill="#9B9E70"
+                />
+              </g>
+              <g id="bottom-box">
+                <rect
+                  id="Rectangle 7"
+                  x="62"
+                  y="412.5"
+                  width="521.5"
+                  height="28.5"
+                  fill="#A77948"
+                />
+              </g>
+
+              <rect
+                id="bottom"
+                x="65"
+                y="415.75"
+                width="515"
+                height="22"
+                stroke="#050708"
+                stroke-width="8"
+              />
+              <rect
+                id="top"
+                x="65"
+                y="74.75"
+                width="515"
+                height="341"
+                stroke="#050708"
+                stroke-width="8"
+              />
+
+              <g id="calender-lines">
+                <path
+                  id="Vector 10"
+                  d="M108.5 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 11"
+                  d="M151 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 12"
+                  d="M193.5 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 13"
+                  d="M236 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 14"
+                  d="M279 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 15"
+                  d="M321 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 16"
+                  d="M364 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 17"
+                  d="M406 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 18"
+                  d="M449 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 19"
+                  d="M492 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <path
+                  id="Vector 20"
+                  d="M535 55.25V95.75"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+              </g>
+            </g>
+
+            <g id="full-clock">
+              <g id="clock">
+                <circle
+                  id="clock-stroke"
+                  cx="429.5"
+                  cy="522.25"
+                  r="127.5"
+                  fill="white"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+                <circle
+                  id="center-clock"
+                  cx="429.5"
+                  cy="522.25"
+                  r="64.25"
+                  fill="white"
+                />
+              </g>
+              <g id="inner-clock">
+                <path
+                  id="Vector"
+                  d="M429.589 415.75V459.679C440.038 459.678 450.327 462.253 459.544 467.176C468.761 472.099 476.622 479.219 482.432 487.904C488.242 496.589 491.821 506.572 492.853 516.971C493.885 527.369 492.338 537.861 488.349 547.519C484.36 557.177 478.052 565.702 469.983 572.341C461.913 578.98 452.332 583.528 442.087 585.582C431.841 587.635 421.247 587.132 411.243 584.116C401.238 581.099 392.132 575.664 384.728 568.289L353.621 599.396C363.587 609.354 375.418 617.249 388.438 622.63C401.459 628.01 415.412 630.769 429.5 630.75C488.871 630.75 537 582.621 537 523.25C537 463.879 488.918 415.8 429.589 415.75Z"
+                  fill="#9B9E70"
+                />
+                <path
+                  id="Vector_2"
+                  d="M366.018 523.25C366.018 506.39 372.716 490.22 384.638 478.298C396.56 466.376 412.729 459.679 429.589 459.679V415.75H429.5C370.129 415.75 322 463.879 322 523.25C321.982 537.402 324.767 551.417 330.194 564.486C335.622 577.556 343.584 589.421 353.622 599.396L384.729 568.289C378.79 562.39 374.078 555.372 370.867 547.642C367.655 539.911 366.007 531.621 366.018 523.25V523.25Z"
+                  fill="#DFC379"
+                />
+              </g>
+            </g>
+            <g id="clock-hand-minute">
+              <path
+                id="Vector 2"
+                d="M429.589 409.188V526.188"
+                stroke="#A77948"
+                stroke-width="8"
+              />
+            </g>
+            <g id="clock-hand-hour">
+              <path
+                id="Vector 3"
+                d="M429.589 404.375L429.589 522.25"
+                stroke="#A77948"
+                stroke-width="8"
+              />
+            </g>
+            <g id="bottom-rectangle-boxes">
+              <g id="bottom-box-1">
+                <rect
+                  id="Rectangle 1"
+                  x="65"
+                  y="607.5"
+                  width="22"
+                  height="22"
+                  fill="#9B9E70"
+                />
+              </g>
+              <g id="bottom-box-2">
+                <rect
+                  id="Rectangle 2"
+                  x="108"
+                  y="607.5"
+                  width="22"
+                  height="22"
+                  fill="#DFC379"
+                />
+              </g>
+              <g id="bottom-box-3">
+                <rect
+                  id="Rectangle 3"
+                  x="151"
+                  y="607.5"
+                  width="22"
+                  height="22"
+                  fill="#DFC379"
+                />
+              </g>
+              <g id="bottom-box-4">
+                <rect
+                  id="Rectangle 4"
+                  x="193.5"
+                  y="607.5"
+                  width="22"
+                  height="22"
+                  fill="#E3E1DD"
+                />
+              </g>
+            </g>
+            <g id="lines-bg-box">
+              <rect
+                id="Rectangle 5"
+                x="65"
+                y="458.25"
+                width="75.75"
+                height="75.75"
+                fill="#E3E1DD"
+              />
+            </g>
+            <g id="bottom-lines">
+              <g id="bottom-line-1">
+                <path
+                  id="Vector 4"
+                  d="M109 480.25H236"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="bottom-line-2">
+                <path
+                  id="Vector 5"
+                  d="M109 500.75H236"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="bottom-line-3">
+                <path
+                  id="Vector 6"
+                  d="M109 522.25H236"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="bottom-line-4">
+                <path
+                  id="Vector 7"
+                  d="M109 543.75H172.5"
+                  stroke="#050708"
+                  stroke-width="8"
+                />
+              </g>
+            </g>
+            <g id="calander-box">
+              <g id="b-1">
+                <rect
+                  id="Rectangle 8"
+                  x="154"
+                  y="182.25"
+                  width="42"
+                  height="42"
+                  fill="#DFC379"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-2">
+                <rect
+                  id="Rectangle 12"
+                  x="196"
+                  y="182.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-3">
+                <rect
+                  id="Rectangle 16"
+                  x="238"
+                  y="182.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-4">
+                <rect
+                  id="Rectangle 20"
+                  x="280"
+                  y="182.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-5">
+                <rect
+                  id="Rectangle 24"
+                  x="322"
+                  y="182.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-6">
+                <rect
+                  id="Rectangle 28"
+                  x="364"
+                  y="182.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-7">
+                <rect
+                  id="Rectangle 32"
+                  x="406"
+                  y="182.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-8">
+                <rect
+                  id="Rectangle 36"
+                  x="448"
+                  y="182.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-9">
+                <rect
+                  id="Rectangle 9"
+                  x="154"
+                  y="224.25"
+                  width="42"
+                  height="42"
+                  fill="#DFC379"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-10">
+                <rect
+                  id="Rectangle 13"
+                  x="196"
+                  y="224.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-11">
+                <rect
+                  id="Rectangle 17"
+                  x="238"
+                  y="224.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-12">
+                <rect
+                  id="Rectangle 21"
+                  x="280"
+                  y="224.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-13">
+                <rect
+                  id="Rectangle 25"
+                  x="322"
+                  y="224.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-14">
+                <rect
+                  id="Rectangle 29"
+                  x="364"
+                  y="224.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-15">
+                <rect
+                  id="Rectangle 33"
+                  x="406"
+                  y="224.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-16">
+                <rect
+                  id="Rectangle 37"
+                  x="448"
+                  y="224.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-17">
+                <rect
+                  id="Rectangle 10"
+                  x="154"
+                  y="266.25"
+                  width="42"
+                  height="42"
+                  fill="#DFC379"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-18">
+                <rect
+                  id="Rectangle 14"
+                  x="196"
+                  y="266.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-19">
+                <rect
+                  id="Rectangle 18"
+                  x="238"
+                  y="266.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-20">
+                <rect
+                  id="Rectangle 22"
+                  x="280"
+                  y="266.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-21">
+                <rect
+                  id="Rectangle 26"
+                  x="322"
+                  y="266.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-22">
+                <rect
+                  id="Rectangle 30"
+                  x="364"
+                  y="266.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-23">
+                <rect
+                  id="Rectangle 34"
+                  x="406"
+                  y="266.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-24">
+                <rect
+                  id="Rectangle 38"
+                  x="448"
+                  y="266.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-25">
+                <rect
+                  id="Rectangle 11"
+                  x="154"
+                  y="308.25"
+                  width="42"
+                  height="42"
+                  fill="#DFC379"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-26">
+                <rect
+                  id="Rectangle 15"
+                  x="196"
+                  y="308.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-27">
+                <rect
+                  id="Rectangle 19"
+                  x="238"
+                  y="308.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-28">
+                <rect
+                  id="Rectangle 23"
+                  x="280"
+                  y="308.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-29">
+                <rect
+                  id="Rectangle 27"
+                  x="322"
+                  y="308.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-30">
+                <rect
+                  id="Rectangle 31"
+                  x="364"
+                  y="308.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-31">
+                <rect
+                  id="Rectangle 35"
+                  x="406"
+                  y="308.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+              <g id="b-32">
+                <rect
+                  id="Rectangle 39"
+                  x="448"
+                  y="308.25"
+                  width="42"
+                  height="42"
+                  fill="white"
+                  stroke="#E3E1DD"
+                  stroke-width="8"
+                />
+              </g>
+            </g>
+            <g id="arrow-1">
+              <path
+                id="Vector 21"
+                d="M244.5 236.75L258.25 250.5L286.5 222.25"
+                stroke="#9B9E70"
+                stroke-width="8"
+              />
+            </g>
+            <g id="arrow-2">
+              <path
+                id="Vector 22"
+                d="M372 281.25L385.75 295L414 266.75"
+                stroke="#9B9E70"
+                stroke-width="8"
+              />
+            </g>
+            <g id="arrow-3">
+              <path
+                id="Vector 23"
+                d="M458 196.75L471.75 210.5L500 182.25"
+                stroke="#9B9E70"
+                stroke-width="8"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <script>
+      const introText = document.querySelectorAll("#arrow-1 path");
+
+      for (let i = 0; i < introText.length; i++) {
+        console.log(`letter ${i} is ${introText[i].getTotalLength()}`);
+      }
+    </script>
+  </body>
+</html>
